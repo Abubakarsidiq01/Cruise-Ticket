@@ -13,7 +13,7 @@ const TripResults = ({ data }) => {
     selectedPrice
   } = data;
 
-  // Set sustainablePrice dynamically with a 20% premium
+  // Setting sustainablePrice dynamically with a 20% premium
   const dynamicSustainablePrice = conventionalPrice * 1.2; // 20% premium
 
   const sustainableWidth = (sustainableEmissions / conventionalEmissions) * 100;

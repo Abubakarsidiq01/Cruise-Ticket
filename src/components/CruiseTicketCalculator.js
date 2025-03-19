@@ -48,8 +48,8 @@ const CruiseTicketCalculator = () => {
   const priceDifference = sustainablePrice - conventionalPrice;
   
   // Equivalent impacts
-  const carKilometers = Math.round(emissionsSaved * 5.5); // km in average car
-  const treeDays = Math.round(emissionsSaved * 1.8); // days of a tree absorbing CO2
+  const carKilometers = Math.round(emissionsSaved * 5.5);
+  const treeDays = Math.round(emissionsSaved * 1.8); 
   
   // Selected price and emissions
   const selectedPrice = ticketType === 'conventional' 
