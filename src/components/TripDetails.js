@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CabinDetails from './CabinDetails';
 
 const TripDetails = ({ 
   passengers, 
@@ -9,6 +10,7 @@ const TripDetails = ({
   setCabinType,
   baseTicketPrice 
 }) => {
+  const [showCabinDetails, setShowCabinDetails] = useState(false);
   return (
     <div className="input-section">
       <h2 className="section-title">Your Trip Details</h2>
@@ -56,7 +58,20 @@ const TripDetails = ({
             Deluxe
           </button>
         </div>
+        <button 
+          className="cabin-details-button"
+          onClick={() => setShowCabinDetails(true)}
+        >
+          View Cabin Details
+        </button>
       </div>
+      
+      {showCabinDetails && (
+        <CabinDetails 
+          cabinType={cabinType}
+          onClose={() => setShowCabinDetails(false)}
+        />
+      )}
       
       <div className="form-group">
         <label className="form-label">Ticket Type</label>

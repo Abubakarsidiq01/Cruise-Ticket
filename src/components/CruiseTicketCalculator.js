@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TripDetails from './TripDetails';
 import TripResults from './TripResults';
 
-const CruiseTicketCalculator = () => {
+const CruiseTicketCalculator = ({ route, selectedDate }) => {
   const [passengers, setPassengers] = useState(2);
   const [ticketType, setTicketType] = useState('sustainable');
   const [cabinType, setCabinType] = useState('standard');
@@ -76,10 +76,35 @@ const CruiseTicketCalculator = () => {
     baseTicketPrice
   };
 
+  // Apply date-based price adjustment
+  const dateMultiplier = selectedDate?.priceAdjustment ? (1 + selectedDate.priceAdjustment / 100) : 1;
+  const adjustedConventionalPrice = Math.round(conventionalPrice * dateMultiplier);
+  const adjustedSustainablePrice = Math.round(sustainablePrice * dateMultiplier);
+  const adjustedSelectedPrice = ticketType === 'conventional' 
+    ? adjustedConventionalPrice 
+    : adjustedSustainablePrice;
+
+  const finalCalculationData = {
+    ...calculationData,
+    conventionalPrice: adjustedConventionalPrice,
+    sustainablePrice: adjustedSustainablePrice,
+    selectedPrice: adjustedSelectedPrice,
+    route: route || { name: 'Helsinki ↔ Stockholm' },
+    selectedDate: selectedDate
+  };
+
   return (
     <div className="calculator-container">
       <div className="calculator-inner">
-        <h1 className="calculator-title">Helsinki-Stockholm Cruise Calculator</h1>
+        <h1 className="calculator-title">
+          {route ? `${route.name} Cruise` : 'Cruise Calculator'}
+        </h1>
+        
+        {selectedDate && (
+          <div className="selected-date-info">
+            <p>Departure: {selectedDate.day}, {selectedDate.date} {selectedDate.month} at {selectedDate.time || 'TBD'}</p>
+          </div>
+        )}
         
         <div className="info-box">
           <p className="info-text">Our sustainable cruises use advanced biofuel blends that reduce carbon emissions by up to 70% compared to conventional marine diesel. Each sustainable ticket directly funds our transition to cleaner fuels.</p>
@@ -97,7 +122,7 @@ const CruiseTicketCalculator = () => {
           />
           
           <TripResults 
-            data={calculationData}
+            data={finalCalculationData}
           />
         </div>
       </div>

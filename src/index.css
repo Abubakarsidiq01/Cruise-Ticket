@@ -5,267 +5,465 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #333;
+  min-height: 100vh;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 button {
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Typography System */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #1a1a1a;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; }
+h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 600; }
+
+p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #4a4a4a;
 }
 
 /* App container styles */
 .app-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: 2rem;
-  padding: 1rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+
+.app-header h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .app-footer {
   text-align: center;
-  margin-top: 2rem;
-  padding: 1rem;
-  font-size: 0.8rem;
-  color: #666;
+  margin-top: auto;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
 }
 
 /* Main calculator styles */
 .calculator-container {
-  max-width: 56rem;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   background-color: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e8e8e8;
 }
 
 .calculator-inner {
-  padding: 1.5rem;
+  padding: 3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .calculator-title {
-  font-size: 1.5rem;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: 700;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
 }
 
 /* Info box styles */
 .info-box {
-  background-color: #EBF5FF;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 2.5rem;
+  border-radius: 14px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
 }
 
 .info-text {
-  font-size: 0.875rem;
-  color: #1E40AF;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: white;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 /* Grid layout */
 .main-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 2.5rem;
+  flex: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .main-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 3rem;
   }
 }
 
 /* Input section styles */
 .input-section {
-  background-color: #F9FAFB;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  background: #fafafa;
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid #e8e8e8;
 }
 
 .section-title {
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .form-label {
+  font-family: 'Lexend Deca', sans-serif;
   display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #374151;
-  margin-bottom: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
 }
 
 /* Range input styles */
 .range-input {
   width: 100%;
+  height: 12px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #e2e8f0;
+  border-radius: 10px;
+  outline: none;
+  margin: 1.5rem 0;
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.range-input::-moz-range-thumb {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .range-markers {
+  font-family: 'Lexend Deca', sans-serif;
   display: flex;
   justify-content: space-between;
-  font-size: 0.75rem;
-  color: #6B7280;
+  font-size: 0.875rem;
+  color: #6b6b6b;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  letter-spacing: -0.01em;
 }
 
 .passenger-count {
+  font-family: 'Lexend Deca', sans-serif;
   text-align: center;
-  margin-top: 0.25rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+  letter-spacing: -0.02em;
 }
 
 /* Button styles */
 .button-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .button {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  border-radius: 0.375rem;
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 1.125rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  letter-spacing: -0.01em;
 }
 
 .button-active {
-  background-color: #2563EB;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
 }
 
 .button-inactive {
-  background-color: #E5E7EB;
+  background-color: #e2e8f0;
+  color: #64748b;
+}
+
+.button-inactive:hover {
+  background-color: #cbd5e1;
+  color: #475569;
 }
 
 /* Ticket type styles */
 .ticket-type-group {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .ticket-option {
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border-width: 2px;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border-width: 3px;
   border-style: solid;
   cursor: pointer;
-  background: none;
+  background: white;
   text-align: left;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ticket-option:hover::before {
+  opacity: 1;
 }
 
 .ticket-option-conventional {
-  border-color: #2563EB;
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
 }
 
 .ticket-option-sustainable {
-  border-color: #10B981;
+  border-color: #10b981;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
 }
 
 .ticket-option-inactive {
-  border-color: #E5E7EB;
+  border-color: #e2e8f0;
+  background: white;
 }
 
 .ticket-title {
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 700;
+  font-size: 1.375rem;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
 }
 
 .ticket-subtitle {
-  font-size: 0.875rem;
-  color: #6B7280;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.9375rem;
+  color: #6b6b6b;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .ticket-price {
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 700;
-  margin-top: 0.5rem;
+  font-size: 1.625rem;
+  margin-top: 1rem;
+  color: #667eea;
+  letter-spacing: -0.02em;
+}
+
+.ticket-option-sustainable .ticket-price {
+  color: #10b981;
 }
 
 .ticket-tag {
-  font-size: 0.75rem;
-  color: #10B981;
-  margin-top: 0.25rem;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.875rem;
+  color: #10b981;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  letter-spacing: -0.01em;
 }
 
 /* Results display styles */
 .footprint-section {
-  background-color: #F9FAFB;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
+  background: #fafafa;
+  padding: 2.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  border: 1px solid #e8e8e8;
 }
 
 /* Progress bar styles */
 .progress-container {
   width: 100%;
-  background-color: #E5E7EB;
+  background-color: #e2e8f0;
   border-radius: 9999px;
-  height: 1.5rem;
-  margin-bottom: 1rem;
+  height: 3rem;
+  margin-bottom: 2rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
   display: flex;
   height: 100%;
+  border-radius: 9999px;
+  overflow: hidden;
 }
 
 .progress-green {
-  background-color: #10B981;
-  height: 1.5rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  height: 3rem;
   border-top-left-radius: 9999px;
   border-bottom-left-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s ease;
 }
 
 .progress-orange {
-  background-color: #F97316;
-  height: 1.5rem;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  height: 3rem;
   border-top-right-radius: 9999px;
   border-bottom-right-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s ease;
 }
 
 .progress-text {
-  padding: 0 0.5rem;
-  font-size: 0.75rem;
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 0 1rem;
+  font-size: 0.9375rem;
   color: white;
   font-weight: 700;
   display: flex;
   align-items: center;
   height: 100%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: -0.01em;
 }
 
 .legend {
   display: flex;
   justify-content: space-between;
-  font-size: 0.875rem;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
+  color: #4a4a4a;
 }
 
 .legend-marker {
   display: inline-block;
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border-radius: 9999px;
-  margin-right: 0.25rem;
+  margin-right: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .marker-green {
@@ -278,88 +476,1852 @@ button {
 
 /* Impact section styles */
 .impact-section {
-  background-color: #ECFDF5;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  padding: 2.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+  border: 2px solid rgba(16, 185, 129, 0.25);
 }
 
 .impact-title {
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 700;
-  color: #065F46;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  color: #065f46;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 .impact-description {
-  font-size: 0.875rem;
-  margin-bottom: 0.75rem;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #047857;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .impact-stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   text-align: center;
 }
 
 .impact-stat {
   background-color: white;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  border: 1px solid #e8e8e8;
+}
+
+.impact-stat:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
 }
 
 .impact-value {
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 4vw, 2.75rem);
   color: #047857;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
 .impact-label {
-  font-size: 0.75rem;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.9375rem;
+  color: #059669;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .impact-footer {
-  font-size: 0.75rem;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: #047857;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 /* Price section styles */
 .price-section {
-  background-color: #2563EB;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
 }
 
 .price-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .price-value {
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: clamp(1.875rem, 3vw, 2.25rem);
+  letter-spacing: -0.02em;
 }
 
 .price-detail {
-  font-size: 0.75rem;
-  color: #BFDBFE;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.9);
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .checkout-button {
+  font-family: 'Lexend Deca', sans-serif;
   width: 100%;
   background-color: white;
-  color: #2563EB;
+  color: #667eea;
   font-weight: 700;
-  padding: 0.5rem 0;
-  margin-top: 1rem;
-  border-radius: 0.375rem;
+  font-size: 1.125rem;
+  padding: 1.25rem 0;
+  margin-top: 2rem;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.checkout-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.checkout-button:active {
+  transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: white;
+  border-radius: 2rem;
+  padding: 3rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-title {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.875rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.modal-subtitle {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.modal-price {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.625rem, 3vw, 1.875rem);
+  font-weight: 700;
+  color: #667eea;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.form-field input {
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #e8e8e8;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.form-field input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-cancel-button,
+.modal-confirm-button {
+  font-family: 'Lexend Deca', sans-serif;
+  flex: 1;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.modal-cancel-button {
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.modal-cancel-button:hover {
+  background: #cbd5e1;
+  color: #475569;
+}
+
+.modal-confirm-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.modal-confirm-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.booking-confirmed {
+  text-align: center;
+  padding: 2rem;
+}
+
+.checkmark {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.confirmation-text {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+}
+
+/* Navigation Styles */
+.main-navigation {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 1.375rem;
+  font-family: 'Lexend Deca', sans-serif;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+.nav-logo:hover {
+  opacity: 0.8;
+}
+
+.logo-img {
+  width: 42px;
+  height: 42px;
+}
+
+.logo-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  font-family: 'Lexend Deca', sans-serif;
+  transition: all 0.2s ease;
+  padding: 0.625rem 1.125rem;
+  border-radius: 8px;
+  letter-spacing: -0.01em;
+}
+
+.nav-link:hover {
+  color: #667eea;
+  background: #f5f7ff;
+}
+
+.nav-link-active {
+  color: #667eea;
+  background: #f5f7ff;
+  font-weight: 600;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #667eea;
+  border-radius: 2px;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* Home Page Styles */
+.home-page {
+  width: 100%;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 8rem 2rem 6rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  font-family: 'Lexend Deca', sans-serif;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 0.625rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-title {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: white;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 400;
+  margin-bottom: 3rem;
+  opacity: 0.95;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: -0.01em;
+}
+
+.btn-primary {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  background: #f8f9ff;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-large {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.125rem;
+}
+
+.stats-section {
+  padding: 5rem 2rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e8e8e8;
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+  background: #fafafa;
+}
+
+.stat-number {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.calculator-section {
+  padding: 6rem 2rem;
+  background: #ffffff;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.calculator-section .calculator-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.calculator-section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.calculator-section-header .section-heading {
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: #6b6b6b;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+.features-section {
+  padding: 6rem 2rem;
+  background: #fafafa;
+}
+
+.section-heading {
+  font-family: 'Lexend Deca', sans-serif;
+  text-align: center;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4rem;
+  letter-spacing: -0.02em;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #e8e8e8;
+  transition: all 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+  background: #fafafa;
+}
+
+.feature-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.feature-title {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.feature-desc {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.cta-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-content h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: white;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.cta-content p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  opacity: 0.95;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Book Page Styles */
+.book-page {
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #ffffff;
+  min-height: calc(100vh - 200px);
+}
+
+.booking-steps {
+  margin-bottom: 3rem;
+}
+
+.book-page-header {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin: -3rem -2rem 3rem -2rem;
+}
+
+.book-page-header h1 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.book-page-header p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.step-section {
+  margin-bottom: 4rem;
+  padding: 3rem;
+  background: #fafafa;
+  border-radius: 16px;
+  border: 1px solid #e8e8e8;
+  position: relative;
+}
+
+.step-number {
+  font-family: 'Lexend Deca', sans-serif;
+  position: absolute;
+  top: -1.5rem;
+  left: 2.5rem;
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.step-title {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  margin-top: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.step-description {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.selected-route-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.change-route-btn {
+  font-family: 'Lexend Deca', sans-serif;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.change-route-btn:hover {
+  background: white;
+  color: #667eea;
+  border-color: white;
+}
+
+.route-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.route-icon {
+  font-size: 2.5rem;
+}
+
+.route-info h3 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+  letter-spacing: -0.01em;
+}
+
+.route-info p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -0.01em;
+}
+
+.selected-date-info {
+  background: #f5f7ff;
+  padding: 1.25rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #667eea;
+  border: 1px solid #e0e7ff;
+  letter-spacing: -0.01em;
+}
+
+/* Route Selector Styles */
+.route-selector {
+  margin-bottom: 2rem;
+}
+
+.route-selector .form-label {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  display: block;
+  letter-spacing: -0.01em;
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.route-card {
+  background: white;
+  border: 2px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 2rem 1.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.route-card:hover {
+  border-color: #667eea;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+}
+
+.route-card-active {
+  border-color: #667eea;
+  background: #f5f7ff;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+}
+
+.route-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.route-name {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.route-duration {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.9375rem;
+  color: #6b6b6b;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.route-description {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.9375rem;
+  color: #6b6b6b;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.route-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.route-badge {
+  font-family: 'Lexend Deca', sans-serif;
+  background: #f0f0f0;
+  color: #6b6b6b;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.routes-page {
+  padding: 0 2rem 4rem;
+}
+
+.routes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.route-card-large {
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 3rem;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 0;
+  transition: all 0.2s ease;
+}
+
+.route-card-large:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+}
+
+.route-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.route-icon-large {
+  font-size: 3rem;
+}
+
+.route-card-large h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.route-features, .route-highlights {
+  margin: 1.5rem 0;
+}
+
+.route-features h3, .route-highlights h3 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.feature-tag {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.route-highlights ul {
+  list-style: none;
+  padding: 0;
+}
+
+.route-highlights li {
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 0.5rem 0;
+  color: #6b6b6b;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.route-highlights li:before {
+  content: "✓ ";
+  color: #10b981;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.route-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e2e8f0;
+}
+
+.route-price {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #667eea;
+  letter-spacing: -0.02em;
+}
+
+/* Date Selector Styles */
+.date-selector {
+  margin-bottom: 2rem;
+}
+
+.date-selector .form-label {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  display: block;
+  letter-spacing: -0.01em;
+}
+
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.875rem;
+  margin-bottom: 2rem;
+}
+
+.date-card {
+  background: white;
+  border: 2px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-card:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.date-card-active {
+  border-color: #667eea;
+  background: #f5f7ff;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.date-day {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.8125rem;
+  color: #6b6b6b;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.date-number {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.date-month {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.8125rem;
+  color: #6b6b6b;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.date-badge {
+  font-family: 'Lexend Deca', sans-serif;
+  background: #f97316;
+  color: white;
+  font-size: 0.6875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.time-selector {
+  margin-top: 2rem;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.time-button {
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 0.875rem 1.25rem;
+  background: white;
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6b6b6b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.time-button:hover {
+  border-color: #667eea;
+  color: #667eea;
+  background: #f5f7ff;
+}
+
+.time-button-active {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Cabin Details Styles */
+.cabin-details-button {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border: 2px solid #667eea;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cabin-details-button:hover {
+  background: #667eea;
+  color: white;
+}
+
+.cabin-details-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
+}
+
+.cabin-details-content {
+  background: white;
+  border-radius: 2rem;
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #e2e8f0;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: #cbd5e1;
+}
+
+.cabin-details-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cabin-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.cabin-details-header h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.cabin-specs {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 1rem;
+}
+
+.spec-item {
+  flex: 1;
+}
+
+.spec-label {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.875rem;
+  color: #6b6b6b;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.spec-value {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+
+.cabin-description {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.amenities-section h3 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.amenity-item {
+  font-family: 'Lexend Deca', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  color: #6b6b6b;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.amenity-icon {
+  color: #10b981;
+  font-weight: 700;
+}
+
+/* Enhanced Booking Modal Styles */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.payment-summary {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin: 1.5rem 0;
+}
+
+.summary-row {
+  font-family: 'Lexend Deca', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.summary-row.total {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #e8e8e8;
+  letter-spacing: -0.02em;
+}
+
+.booking-reference {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.reference-label {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 0.9375rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.reference-number {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.booking-summary {
+  background: #fafafa;
+  padding: 1.75rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  text-align: left;
+  border: 1px solid #e8e8e8;
+}
+
+.booking-summary p {
+  font-family: 'Lexend Deca', sans-serif;
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  color: #6b6b6b;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.booking-summary strong {
+  font-family: 'Lexend Deca', sans-serif;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* About, Contact, FAQ Page Styles */
+.about-page, .contact-page, .faq-page, .routes-page {
+  padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+.about-hero, .contact-hero, .faq-hero, .routes-hero {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.about-hero h1, .contact-hero h1, .faq-hero h1, .routes-hero h1 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.about-tagline, .contact-hero p, .faq-hero p, .routes-hero p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 400;
+  opacity: 0.95;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+}
+
+.about-content {
+  padding: 0 2rem 4rem;
+  line-height: 1.8;
+}
+
+.about-section {
+  margin-bottom: 3rem;
+  padding: 3rem;
+  background: #fafafa;
+  border-radius: 16px;
+  border: 1px solid #e8e8e8;
+  position: relative;
+}
+
+.section-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.about-section h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.about-section p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: #4a4a4a;
+  line-height: 1.8;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.impact-item {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 1rem;
+}
+
+.impact-number {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.impact-label {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Contact Page Styles */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 0 2rem 4rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-card {
+  background: #fafafa;
+  padding: 2.5rem 2rem;
+  border-radius: 14px;
+  border: 1px solid #e8e8e8;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.12);
+  border-color: #667eea;
+}
+
+.info-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.info-card h3 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.info-card p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  margin: 0.5rem 0;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.contact-form-container {
+  background: #fafafa;
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid #e8e8e8;
+}
+
+.contact-form-container h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-success {
+  text-align: center;
+  padding: 3rem;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+/* FAQ Styles */
+.faq-list {
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+}
+
+.faq-item {
+  background: #fafafa;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+.faq-question {
+  font-family: 'Lexend Deca', sans-serif;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.faq-question:hover {
+  background: #f0f0f0;
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  color: #667eea;
+  font-weight: 300;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.faq-answer {
+  padding: 0 2rem 1.5rem 2rem;
+}
+
+.faq-answer p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.faq-cta {
+  text-align: center;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px;
+  margin: 0 2rem 4rem;
+}
+
+.faq-cta h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.faq-cta p {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: 400;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+}
+
+/* Footer Styles */
+.app-footer {
+  background: #1e293b;
+  color: white;
+  padding: 3rem 2rem 1rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3, .footer-section h4 {
+  font-family: 'Lexend Deca', sans-serif;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.footer-section a {
+  font-family: 'Lexend Deca', sans-serif;
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+}
+
+.footer-section a:hover {
+  color: white;
+}
+
+.footer-section p {
+  font-family: 'Lexend Deca', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+}
+
+.footer-bottom {
+  font-family: 'Lexend Deca', sans-serif;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-menu-open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .route-grid, .date-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
 }
